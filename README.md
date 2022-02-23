@@ -10,7 +10,7 @@ This project uses `npm` and required [Node.js](https://nodejs.org/) to be instal
 
 Apart from that, this project also uses Live Server to run the app locally. Use this command to install:
 
-```
+```shell
 > npm install -g live-server
 ```
 

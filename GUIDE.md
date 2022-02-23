@@ -142,6 +142,8 @@ Next, you will be creating a new `src` folder to store all the source code files
     > mkdir src
     ```
 
+    ![](images/3.png)
+
 2. In the `src` directory, create a new file `index.js` with the following code:
 
     ```js
@@ -286,7 +288,7 @@ In this guide, we will on focus on implementing the `initialization`, `setBounds
     }
     ```
 
-    > **NOTE**: For the full source code of Mapbox implementation, you can find it in [/src/mapbox-renderer.js](./src/mapbox-renderer.js). 
+    > **NOTE**: For the full source code of Mapbox implementation, please find it in [/src/mapbox-renderer.js](./src/mapbox-renderer.js). 
 
 # Step 5: Build the project
 
