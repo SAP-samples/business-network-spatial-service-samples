@@ -1,20 +1,20 @@
-# [Title]
+# Introduction 
+TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
 
-## Description
+# Getting Started
+TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
+1.	Installation process
+2.	Software dependencies
+3.	Latest releases
+4.	API references
 
-## Requirements
+# Build and Test
+TODO: Describe and show how to build your code and run the tests. 
 
-## Download and Installation
+# Contribute
+TODO: Explain how other users and developers can contribute to make your code better. 
 
-## Known Issues
-
-## How to obtain support
-[Create an issue](https://github.com/SAP-samples/<repository-name>/issues) in this repository if you find a bug or have questions about the content.
- 
-For additional support, [ask a question in SAP Community](https://answers.sap.com/questions/ask.html).
-
-## Contributing
-If you wish to contribute code, offer fixes or improvements, please send a pull request. Due to legal reasons, contributors will be asked to accept a DCO when they create the first pull request to this project. This happens in an automated fashion during the submission process. SAP uses [the standard DCO text of the Linux Foundation](https://developercertificate.org/).
-
-## License
-Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.
+If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
+- [ASP.NET Core](https://github.com/aspnet/Home)
+- [Visual Studio Code](https://github.com/Microsoft/vscode)
+- [Chakra Core](https://github.com/Microsoft/ChakraCore)
