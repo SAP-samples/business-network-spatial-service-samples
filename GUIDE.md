@@ -22,7 +22,7 @@ In this step, you will create a new project to build your Mapbox app with NSC Cl
     ```shell
     > npm i -g live-server
     > npm i @sap/nsc-client mapbox-gl events
-    > npm i copy-webpack-plugin webpack webpack-cli --save-dev
+    > npm i copy-webpack-plugin webpack webpack-cli worker-loader --save-dev
     ```
 
 4. Open `package.json` and add the following scripts:
