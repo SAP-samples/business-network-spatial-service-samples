@@ -1,6 +1,6 @@
 import mapboxgl, { Map, NavigationControl } from "mapbox-gl/dist/mapbox-gl";
 import MapboxDraw from "@mapbox/mapbox-gl-draw";
-import MapboxWorker from "worker-loader!mapbox-gl/dist/mapbox-gl-csp-worker";
+import MapboxWorker from "mapbox-gl/dist/mapbox-gl-csp-worker";
 import MapboxGeocoder from "@mapbox/mapbox-gl-geocoder";
 import EventEmitter from "events";
 import { EventType, DrawMode } from "./types";

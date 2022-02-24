@@ -3,6 +3,14 @@ const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
     entry: './src/index.js',
+    module: {
+        rules: [
+            {
+                test: /\bmapbox-gl-csp-worker.js\b/i,
+                use: { loader: 'worker-loader' }
+            }
+        ]
+    },
     plugins: [
         new CopyPlugin({
             patterns: [
