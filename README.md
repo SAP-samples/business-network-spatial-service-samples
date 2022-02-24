@@ -1,20 +1,39 @@
-# Introduction 
-TODO: Give a short introduction of your project. Let this section explain the objectives or the motivation behind this project. 
+# Business Network Spatial Service Samples
 
-# Getting Started
-TODO: Guide users through getting your code up and running on their own system. In this section you can talk about:
-1.	Installation process
-2.	Software dependencies
-3.	Latest releases
-4.	API references
+## Description
 
-# Build and Test
-TODO: Describe and show how to build your code and run the tests. 
+This repository contains the source code and guide to create a custom map renderer with [NSC Client](https://www.npmjs.com/package/@sap/nsc-client). The guide uses the [Mapbox](https://www.mapbox.com/) as the map provider and mapping features.
 
-# Contribute
-TODO: Explain how other users and developers can contribute to make your code better. 
+## Requirements
 
-If you want to learn more about creating good readme files then refer the following [guidelines](https://docs.microsoft.com/en-us/azure/devops/repos/git/create-a-readme?view=azure-devops). You can also seek inspiration from the below readme files:
-- [ASP.NET Core](https://github.com/aspnet/Home)
-- [Visual Studio Code](https://github.com/Microsoft/vscode)
-- [Chakra Core](https://github.com/Microsoft/ChakraCore)
+This project uses `npm` and required [Node.js](https://nodejs.org/) to be installed.
+
+Apart from that, this project also uses Live Server to run the app locally. Use this command to install:
+
+```shell
+> npm install -g live-server
+```
+
+## Download and Installation
+
+A step-by-step guide on how to create this application from scratch can be found [here](./GUIDE.md).
+
+Alternatively, you may clone this repo and use the below commands in the cloned directory to run the app locally.
+
+```shell
+# Install dependencies
+> npm install
+
+# Build the project
+> npm run build
+
+# Run the app
+> npm start
+```
+
+## API Reference
+
+More information on the NSC Client Map Renderer API can be found [here](./API.md).
+
+## License
+Copyright (c) 2022 SAP SE or an SAP affiliate company. All rights reserved. This project is licensed under the Apache Software License, version 2.0 except as noted otherwise in the [LICENSE](LICENSES/Apache-2.0.txt) file.

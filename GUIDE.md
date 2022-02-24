@@ -2,7 +2,7 @@ This is a step-by-step guide to develop a simple web application with NSC Client
 
 # Step 1: Create new map app
 
-In this step, you will a new project to build your Mapbox app with NSC Client.
+In this step, you will create a new project to build your Mapbox app with NSC Client.
 
 1. Open a Terminal or Command Prompt window and navigate to the space where you want to develop the app. Then create a new folder:
 
@@ -22,10 +22,10 @@ In this step, you will a new project to build your Mapbox app with NSC Client.
     ```shell
     > npm i -g live-server
     > npm i @sap/nsc-client mapbox-gl events
-    > npm i copy-webpack-plugin webpack webpack-cli worker-loader --save-dev
+    > npm i copy-webpack-plugin webpack webpack-cli --save-dev
     ```
 
-4. Open `package.json` file and add the following scripts:
+4. Open `package.json` and add the following scripts:
 
     ```json
     {
@@ -40,7 +40,7 @@ In this step, you will a new project to build your Mapbox app with NSC Client.
     }
     ```
 
-5. Create a new file name `webpack.config.js` and paste the following code to the file:
+5. This project uses `Webpack` to build. Hence, you would need to create a Webpack configuration file (`webpack.config.js`) with the following code:
 
     ```js
     const path = require('path');
@@ -48,14 +48,6 @@ In this step, you will a new project to build your Mapbox app with NSC Client.
 
     module.exports = {
         entry: './src/index.js',
-        module: {
-            rules: [
-                {
-                    test: /\bmapbox-gl-csp-worker.js\b/i,
-                    use: { loader: 'worker-loader' }
-                }
-            ]
-        },
         plugins: [
             new CopyPlugin({
                 patterns: [
@@ -66,14 +58,11 @@ In this step, you will a new project to build your Mapbox app with NSC Client.
         output: {
             path: path.resolve(__dirname, 'public'),
             filename: 'bundle.js'
-        },
-        performance: {
-            hints: false,
-            maxEntrypointSize: 512000,
-            maxAssetSize: 512000
         }
     };
     ```
+
+    > NOTE: For more information on the Webpack configuration, please visit [here](https://webpack.js.org/configuration/).
 
 6. In the end of this step, your folder structure will look as below:
 
@@ -108,15 +97,20 @@ In this step, you will create a `public` folder to host the index.html and CSS s
     </head>
 
     <body>
+        <!-- the container for the map -->
         <div id="container"></div>
+
+        <!-- the js library file for NSC Client -->
         <script src="./nsc-client/bundle.js"></script>
+
+        <!-- the js bundle file built by Webpack -->
         <script src="./bundle.js"></script>
     </body>
 
     </html>
     ```
 
-3. Next, create a new directory `css` and in the directory, create new CSS file `styles.css` with the following code:
+3. CSS styles are required to style the app. Next, create a new directory `css` and in the directory, create new CSS file `styles.css` with the following code:
 
     ```css
     body {
@@ -150,11 +144,14 @@ Next, you will be creating a new `src` folder to store all the source code files
     import MapboxRenderer from "./mapbox-renderer";
 
     (() => {
-        return new nsc.Client(new MapBoxRenderer, "container");
+        // instantiate the NSC Client object. 2 parameters are required:
+        // first: the custom map renderer object
+        // second: the element ID of the container in index.html
+        return new nsc.Client(new MapboxRenderer, "container");
     })();
     ```
 
-    > **NOTE**: index.js serves as the entry point for the app and we use this to instantiate the NSC Client including the custom map renderer implementation. 
+    > NOTE: index.js serves as the entry point for the app and we use this to instantiate the NSC Client including the custom map renderer implementation. 
 
 # Step 4: Create custom map renderer
 
@@ -176,36 +173,62 @@ In this guide, we will on focus on implementing the `initialization`, `setBounds
 
     export default class MapboxRenderer {
 
+        // contructor for the Map Renderer
         constructor() {
             mapboxgl.workerClass = MapboxWorker;
 
             this._events = new EventEmitter();
         }
 
+        /**************************************************************************
+         * ACCESSOR PROPERTIES
+         **************************************************************************/
+
+        // getter for map style
         get style() { }
 
+        // setter for map style
         set style(value) { }
 
+        // getter for map center coordinate
         get center() { }
 
+        // setter for map center coordinate
         set center(value) { }
 
+        // getter for map zoom level
         get zoom() { }
 
+        // getter for map zoom level
         set zoom(value) { }
 
+        /**************************************************************************
+         * EVENTS & EVENT HANDLERS
+         **************************************************************************/
+
+        // handler for click event
         onClick(listener) { }
 
+        // handler for layer click event
         onClickLayer(listener) { }
 
+        // handler for contenxtMenu event
         onContextMenu(listener) { }
 
+        // handler for layer contextMenu event
         onContextMenuLayer(listener) { }
 
+        // handler for draw event
         onDraw(listener) { }
 
+        // handler for selectionChange event
         onSelectionChange(listener) { }
 
+        /**************************************************************************
+         * METHODS
+         **************************************************************************/
+
+        // initilize the map renderer
         initialize(options) {
             this._apiKey = options.apiKey;
 
@@ -226,6 +249,7 @@ In this guide, we will on focus on implementing the `initialization`, `setBounds
             return this;
         }
 
+        // adds a layer into the map
         addLayer(layer) {
             if (this._isFullyLoaded) {
                 this._addSourceAndLayer(layer);
@@ -242,6 +266,7 @@ In this guide, we will on focus on implementing the `initialization`, `setBounds
             }
         }
 
+        // adds layers into the map
         addLayers(layers) {
             layers.forEach(layer => {
                 this.addLayer(layer);
@@ -250,20 +275,27 @@ In this guide, we will on focus on implementing the `initialization`, `setBounds
             return this;
         }
 
+        // hides the layers from the map
         hideLayers(layers) { }
 
+        // zooms the map to the specified zoom level
         zoomTo(zoom) { }
 
+        // remove all geometry features
         removeFeature() { }
 
+        // draw feature (point, polygon or line string) on the map
         draw(mode) { }
 
+        // set bounding box of the map
         setBounds(coordinates, padding) {
             this._map.fitBounds(coordinates, { padding });
         }
 
+        // add search bar
         addSearchBar(featureCollection) { }
 
+        // add source and layer to Mapbox
         _addSourceAndLayer(option) {
             if (this._map) {
                 if (this._map.getLayer(option.id)) {
@@ -288,7 +320,9 @@ In this guide, we will on focus on implementing the `initialization`, `setBounds
     }
     ```
 
-    > **NOTE**: For the full source code of Mapbox implementation, please find it in [/src/mapbox-renderer.js](./src/mapbox-renderer.js). 
+    > NOTE: For the full source code of Mapbox implementation and the explanation of each method/event handler, please see [/src/mapbox-renderer.js](./src/mapbox-renderer.js).
+
+    > NOTE: For more information on Mapbox GL JS API Referernce, please see [here](https://docs.mapbox.com/mapbox-gl-js/api/).
 
 # Step 5: Build the project
 
@@ -298,9 +332,11 @@ In this guide, we will on focus on implementing the `initialization`, `setBounds
     > npm run build
     ```
 
+2. The build process uses `Webpack` to transpile the source code from `src` folder and place them into the `public` folder. In the meantime, the `copy-webpack-plugin` for Webpack will copy the `nsc-client` library from `node_modules/@sap` folder into the `public` folder.
+
 # Step 6: Run the app locally
 
-1. Run the following command to start the app locally:
+1. After the build process is done, the app is ready to start. Run the following command to start the app locally:
 
     ```shell
     > npm start
@@ -311,3 +347,5 @@ In this guide, we will on focus on implementing the `initialization`, `setBounds
     ```url
     http://localhost:8080/?mock=true
     ```
+
+    ![](./images/4.png)
