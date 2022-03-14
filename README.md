@@ -1,8 +1,11 @@
 # Business Network Spatial Service Samples
+[![REUSE status](https://api.reuse.software/badge/github.com/SAP-samples/business-network-spatial-service-samples)](https://api.reuse.software/info/github.com/SAP-samples/business-network-spatial-service-samples)
 
 ## Description
 
-This repository contains the source code and guide to create a custom map renderer with [NSC Client](https://www.npmjs.com/package/@sap/nsc-client). The guide uses the [Mapbox](https://www.mapbox.com/) as the map provider and mapping features.
+The Network Spatial Service (NSS) features and functions are bundled within the SAP Business Network (SBN) and comes with 2 standard map renderer - SAP's Visual Business and [Mapbox](https://www.mapbox.com/). These renderers can be configured to display SAP and 3rd party geospatial maps, data and services. NSS leverages the micro-frontend framework provided by [SAP Luigi](https://luigi-project.io/) to render base maps and geospatial services from any provider, once an NSS renderer has been developed as per the instructions contained in this repository. NSS is an Industry4.NOW program initiative, part of SAP's Industry 4.0 strategy to enable the Intelligent Enterprise via  Industry Cloud applications. 
+This repository provides the NSS Mapbox renderer's source code as sample code as well as a guide to create a custom map renderer with [NSC Client](https://www.npmjs.com/package/@sap/nsc-client). Information is also supplied in this repository on NSS APIs that allow geospatial data to be be replicated to the NSS HANA Spatial database so that it can be retrieved and enhanced within SBN applications such as the Asset Intelligence Network (AIN). 
+
 
 ## Requirements
 
